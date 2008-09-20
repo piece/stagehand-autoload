@@ -40,7 +40,7 @@ namespace Stagehand;
 // {{{ Autoload
 
 /**
- * A class loader for Piece, Stagehand, and user-defined namespaces.
+ * A class loader for classes with Piece, Stagehand, and user-defined namespaces.
  *
  * @package    Stagehand_Autoload
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
@@ -81,8 +81,7 @@ class Autoload
     // {{{ load()
 
     /**
-     * Loads an appropriate class for Piece, Stagehand, and user-defined
-     * namespaces.
+     * Loads an appropriate class.
      *
      * @param string $class
      */
