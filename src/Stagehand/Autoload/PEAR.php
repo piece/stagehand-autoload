@@ -37,7 +37,7 @@
 
 namespace Stagehand::Autoload;
 
-// {{{ PEAR
+// {{{ Stagehand::Autoload::PEAR
 
 /**
  * A class loader for classes with the PEAR class naming convention.
@@ -85,12 +85,19 @@ class PEAR
      */
     public static function load($class)
     {
-        $result = @include str_replace('_', '/', str_replace('.', '', $class)) . '.php';
+        $file = str_replace('_', '/', str_replace('.', '', $class)) . '.php';
+        $result = @include $file;
         if ($result === false) {
+            trigger_error("Class $class could not be loaded from $file, file does not exist (include_path=\"" . get_include_path() . '")',
+                          E_USER_WARNING
+                          );
             return false;
         }
 
         if (!class_exists($class, false) && !interface_exists($class, false)) {
+            trigger_error("Class $class was not present in $file, (include_path=\"" . get_include_path() . '")',
+                          E_USER_WARNING
+                          );
             return false;
         }
 
