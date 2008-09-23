@@ -13,8 +13,8 @@
   <email>iteman@users.sourceforge.net</email>
   <active>yes</active>
  </lead>
- <date>2008-09-20</date>
- <time>14:19:07</time>
+ <date>2008-09-23</date>
+ <time>14:57:42</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -73,7 +73,7 @@
     <release>beta</release>
     <api>beta</api>
    </stability>
-   <date>2008-09-20</date>
+   <date>2008-09-23</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License (revised)</license>
    <notes>The first beta release of Stagehand_Autoload.</notes>
   </release>
