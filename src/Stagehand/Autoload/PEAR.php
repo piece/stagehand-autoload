@@ -35,12 +35,11 @@
  * @since      File available since Release 0.1.0
  */
 
-namespace Stagehand::Autoload;
-
-// {{{ Stagehand::Autoload::PEAR
+// {{{ Stagehand_Autoload_PEAR
 
 /**
- * A class loader for classes with the PEAR class naming convention.
+ * A class loader for classes with the PEAR class naming convention without
+ * namespaces.
  *
  * @package    Stagehand_Autoload
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
@@ -48,7 +47,7 @@ namespace Stagehand::Autoload;
  * @version    Release: @package_version@
  * @since      File available since Release 0.1.0
  */
-class PEAR
+class Stagehand_Autoload_PEAR
 {
 
     // {{{ properties
@@ -125,9 +124,9 @@ class PEAR
 
 // set up __autoload
 if (!($_____t = spl_autoload_functions())
-    || !in_array(array('Stagehand::Autoload::PEAR', 'load'), spl_autoload_functions())
+    || !in_array(array('Stagehand_Autoload_PEAR', 'load'), spl_autoload_functions())
     ) {
-    spl_autoload_register(array('Stagehand::Autoload::PEAR', 'load'));
+    spl_autoload_register(array('Stagehand_Autoload_PEAR', 'load'));
     if (function_exists('__autoload') && ($_____t === false)) {
 
         // __autoload() was being used, but now would be ignored, add

@@ -62,8 +62,8 @@ $result = $package->setOptions(array('filelistgenerator' => 'file',
 
 $package->setPackage('Stagehand_Autoload');
 $package->setPackageType('php');
-$package->setSummary('A class loader for Piece, Stagehand, and user-defined namespaces');
-$package->setDescription('Stagehand_TestRunner is a class loader for Piece, Stagehand, and user-defined namespaces.');
+$package->setSummary('class loaders for Piece, Stagehand, and user-defined namespaces');
+$package->setDescription('Stagehand_TestRunner is class loaders for Piece, Stagehand, and user-defined namespaces. And also Stagehand_TestRunner provides a class loader for classes with the PEAR class naming convention.');
 $package->setChannel('pear.piece-framework.com');
 $package->setLicense('BSD License (revised)', 'http://www.opensource.org/licenses/bsd-license.php');
 $package->setAPIVersion($apiVersion);
