@@ -98,7 +98,7 @@ class Autoload
         } while (false);
 
         $file = str_replace('::', '/', str_replace('.', '', $class)) . '.php';
-        $result = @include $file;
+        $result = include $file;
         if ($result === false) {
             trigger_error("Class $class could not be loaded from $file, file does not exist (include_path=\"" . get_include_path() . '")',
                           E_USER_WARNING

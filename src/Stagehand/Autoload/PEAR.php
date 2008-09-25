@@ -85,7 +85,7 @@ class Stagehand_Autoload_PEAR
     public static function load($class)
     {
         $file = str_replace('_', '/', str_replace('.', '', $class)) . '.php';
-        $result = @include $file;
+        $result = include $file;
         if ($result === false) {
             trigger_error("Class $class could not be loaded from $file, file does not exist (include_path=\"" . get_include_path() . '")',
                           E_USER_WARNING
