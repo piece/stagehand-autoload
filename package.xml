@@ -5,8 +5,8 @@
     http://pear.php.net/dtd/package-2.0.xsd">
  <name>Stagehand_Autoload</name>
  <channel>pear.piece-framework.com</channel>
- <summary>class loaders for Piece, Stagehand, and user-defined namespaces</summary>
- <description>Stagehand_TestRunner is class loaders for Piece, Stagehand, and user-defined namespaces. And also Stagehand_TestRunner provides a class loader for classes with the PEAR class naming convention.</description>
+ <summary>Class loaders for classes with namespaces/the PEAR class naming convention.</summary>
+ <description>Stagehand_Autoload is class loaders for classes with namespaces/the PEAR class naming convention.</description>
  <lead>
   <name>KUBO Atsuhiro</name>
   <user>iteman</user>
@@ -14,7 +14,7 @@
   <active>yes</active>
  </lead>
  <date>2008-09-25</date>
- <time>16:10:45</time>
+ <time>16:15:04</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
