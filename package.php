@@ -47,18 +47,16 @@ $apiStability = 'beta';
 $notes = 'The first beta release of Stagehand_Autoload.';
 
 $package = new PEAR_PackageFileManager2();
-$result = $package->setOptions(array('filelistgenerator' => 'file',
-                                     'changelogoldtonew' => false,
-                                     'simpleoutput'      => true,
-                                     'baseinstalldir'    => '/',
-                                     'packagefile'       => 'package.xml',
-                                     'packagedirectory'  => '.',
-                                     'dir_roles'         => array('tests' => 'test',
-                                                                  'doc' => 'doc',
-                                                                  'bin' => 'script',
-                                                                  'src' => 'php'),
-                                     'ignore'            => array('package.php'))
-                               );
+$package->setOptions(array('filelistgenerator' => 'file',
+                           'changelogoldtonew' => false,
+                           'simpleoutput'      => true,
+                           'baseinstalldir'    => '/',
+                           'packagefile'       => 'package.xml',
+                           'packagedirectory'  => '.',
+                           'dir_roles'         => array('doc' => 'doc',
+                                                        'src' => 'php'),
+                           'ignore'            => array('package.php'))
+                     );
 
 $package->setPackage('Stagehand_Autoload');
 $package->setPackageType('php');
