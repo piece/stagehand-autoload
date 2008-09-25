@@ -84,6 +84,10 @@ class Stagehand_Autoload_PEAR
      */
     public static function load($class)
     {
+        if (strpos($class, '::') !== false) {
+            return false;
+        }
+
         $file = str_replace('_', '/', str_replace('.', '', $class)) . '.php';
         $result = include $file;
         if ($result === false) {
