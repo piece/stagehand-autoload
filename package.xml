@@ -13,8 +13,8 @@
   <email>iteman@users.sourceforge.net</email>
   <active>yes</active>
  </lead>
- <date>2008-09-23</date>
- <time>14:57:42</time>
+ <date>2008-09-25</date>
+ <time>15:57:30</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -36,6 +36,9 @@
     <dir name="Stagehand">
      <dir name="Autoload">
       <file name="PEAR.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="PEARWithoutNS.php" role="php">
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
      </dir> <!-- /src/Stagehand/Autoload -->
@@ -73,7 +76,7 @@
     <release>beta</release>
     <api>beta</api>
    </stability>
-   <date>2008-09-23</date>
+   <date>2008-09-25</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License (revised)</license>
    <notes>The first beta release of Stagehand_Autoload.</notes>
   </release>
