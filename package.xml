@@ -14,7 +14,7 @@
   <active>yes</active>
  </lead>
  <date>2008-09-25</date>
- <time>15:57:30</time>
+ <time>16:00:45</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -52,7 +52,7 @@
  <dependencies>
   <required>
    <php>
-    <min>5.3.0</min>
+    <min>5.1.2</min>
    </php>
    <pearinstaller>
     <min>1.4.3</min>

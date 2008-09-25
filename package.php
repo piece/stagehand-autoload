@@ -71,7 +71,7 @@ $package->setAPIStability($apiStability);
 $package->setReleaseVersion($releaseVersion);
 $package->setReleaseStability($releaseStability);
 $package->setNotes($notes);
-$package->setPhpDep('5.3.0');
+$package->setPhpDep('5.1.2');
 $package->setPearinstallerDep('1.4.3');
 $package->addExtensionDep('required', 'pcre');
 $package->addExtensionDep('required', 'spl');
