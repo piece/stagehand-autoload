@@ -97,12 +97,16 @@ class Autoload
             return false;
         } while (false);
 
-        $file = str_replace('::', '/', str_replace('.', '', $class)) . '.php';
+        if (strpos($class, '.') !== false) {
+            return false;
+        }
+
+        $file = str_replace('::', '/', $class) . '.php';
+        $oldLevel = error_reporting();
+        error_reporting($oldLevel & ~E_WARNING);
         $result = include $file;
+        error_reporting($oldLevel);
         if ($result === false) {
-            trigger_error("Class $class could not be loaded from $file, file does not exist (include_path=\"" . get_include_path() . '")',
-                          E_USER_WARNING
-                          );
             return false;
         }
 
