@@ -37,7 +37,7 @@
 
 namespace Stagehand;
 
-// {{{ Stagehand::Autoload
+// {{{ Stagehand\Autoload
 
 /**
  * A class loader for classes with Piece, Stagehand, and user-defined namespaces.
@@ -176,9 +176,9 @@ class Autoload
 
 // set up __autoload
 if (!($_____t = spl_autoload_functions())
-    || !in_array(array('Stagehand::Autoload', 'load'), spl_autoload_functions())
+    || !in_array(array('Stagehand\Autoload', 'load'), spl_autoload_functions())
     ) {
-    spl_autoload_register(array('Stagehand::Autoload', 'load'));
+    spl_autoload_register(array('Stagehand\Autoload', 'load'));
     if (function_exists('__autoload') && ($_____t === false)) {
 
         // __autoload() was being used, but now would be ignored, add
