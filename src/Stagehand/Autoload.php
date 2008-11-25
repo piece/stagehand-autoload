@@ -89,7 +89,7 @@ class Autoload
     {
         do {
             foreach (self::$_namespaces as $namespace) {
-                if (preg_match("/^$namespace::/", $class)) {
+                if (preg_match("/^$namespace\\\/", $class)) {
                     break 2;
                 }
             }
@@ -101,7 +101,7 @@ class Autoload
             return false;
         }
 
-        $file = str_replace('::', '/', $class) . '.php';
+        $file = str_replace('\\', '/', $class) . '.php';
         $oldLevel = error_reporting();
         error_reporting($oldLevel & ~E_WARNING);
         $result = include $file;
