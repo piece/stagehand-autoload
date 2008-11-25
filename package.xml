@@ -5,7 +5,7 @@
     http://pear.php.net/dtd/package-2.0.xsd">
  <name>Stagehand_Autoload</name>
  <channel>pear.piece-framework.com</channel>
- <summary>Class loaders for classes with namespaces/the PEAR class naming convention.</summary>
+ <summary>Class loaders for classes with namespaces/the PEAR class naming convention</summary>
  <description>Stagehand_Autoload is class loaders for classes with namespaces/the PEAR class naming convention.</description>
  <lead>
   <name>KUBO Atsuhiro</name>
@@ -14,7 +14,7 @@
   <active>yes</active>
  </lead>
  <date>2008-11-25</date>
- <time>23:02:57</time>
+ <time>23:20:39</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>

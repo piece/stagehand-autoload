@@ -60,7 +60,7 @@ $package->setOptions(array('filelistgenerator' => 'file',
 
 $package->setPackage('Stagehand_Autoload');
 $package->setPackageType('php');
-$package->setSummary('Class loaders for classes with namespaces/the PEAR class naming convention.');
+$package->setSummary('Class loaders for classes with namespaces/the PEAR class naming convention');
 $package->setDescription('Stagehand_Autoload is class loaders for classes with namespaces/the PEAR class naming convention.');
 $package->setChannel('pear.piece-framework.com');
 $package->setLicense('BSD License (revised)', 'http://www.opensource.org/licenses/bsd-license.php');
