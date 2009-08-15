@@ -30,7 +30,7 @@
  *
  * @package    Stagehand_Autoload
  * @copyright  2008 KUBO Atsuhiro <kubo@iteman.jp>
- * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License (revised)
+ * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    SVN: $Id$
  * @since      File available since Release 0.1.0
  */
@@ -63,7 +63,7 @@ $package->setPackageType('php');
 $package->setSummary('Class loaders for classes with namespaces/the PEAR class naming convention');
 $package->setDescription('Stagehand_Autoload is class loaders for classes with namespaces/the PEAR class naming convention.');
 $package->setChannel('pear.piece-framework.com');
-$package->setLicense('BSD License (revised)', 'http://www.opensource.org/licenses/bsd-license.php');
+$package->setLicense('New BSD License', 'http://www.opensource.org/licenses/bsd-license.php');
 $package->setAPIVersion($apiVersion);
 $package->setAPIStability($apiStability);
 $package->setReleaseVersion($releaseVersion);
