@@ -4,7 +4,7 @@
 /**
  * PHP version 5
  *
- * Copyright (c) 2008 KUBO Atsuhiro <iteman@users.sourceforge.net>,
+ * Copyright (c) 2009 KUBO Atsuhiro <iteman@users.sourceforge.net>,
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,35 +29,24 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @package    Stagehand_Autoload
- * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License (revised)
- * @version    SVN: $Id$
- * @since      File available since Release 0.1.0
- */
-
-require_once 'Stagehand/Autoload/Exception.php';
-require_once 'Stagehand/Autoload/Loader.php';
-
-// {{{ Stagehand_Autoload
-
-/**
- * A utility to register class loaders to the SPL autoload queue.
- *
- * @package    Stagehand_Autoload
- * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License (revised)
+ * @copyright  2009 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
  * @since      File available since Release 0.1.0
  */
-class Stagehand_Autoload
+
+// {{{ Stagehand_Autoload_Loader
+
+/**
+ * @package    Stagehand_Autoload
+ * @copyright  2009 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
+ * @version    Release: @package_version@
+ * @since      File available since Release 0.1.0
+ */
+abstract class Stagehand_Autoload_Loader
 {
 
-    // {{{ constants
-
-    const LOADER_LEGACY = 'Stagehand_Autoload_Loader_LegacyLoader';
-    const LOADER_NAMESPACE = 'Stagehand_Autoload_Loader_NamespaceLoader';
-
-    // }}}
     // {{{ properties
 
     /**#@+
@@ -70,13 +59,13 @@ class Stagehand_Autoload
      * @access protected
      */
 
+    protected $namespaceSeparator;
+
     /**#@-*/
 
     /**#@+
      * @access private
      */
-
-    private static $cache = array();
 
     /**#@-*/
 
@@ -85,52 +74,43 @@ class Stagehand_Autoload
      */
 
     // }}}
-    // {{{ register()
+    // {{{ load()
 
     /**
-     * @param Stagehand_Autoload_Loader $loader
-     */
-    public static function register(Stagehand_Autoload_Loader $loader)
-    {
-        if (function_exists('__autoload')) {
-            spl_autoload_register('__autoload');
-        }
-
-        spl_autoload_register(array($loader, 'load'));
-    }
-
-    // }}}
-    // {{{ getLoader()
-
-    /**
+     * Loads an appropriate class.
+     *
      * @param string $class
-     * @return Stagehand_Autoload_Loader
-     * @throws Stagehand_Autoload_Exception
+     * @return boolean
      */
-    public static function getLoader($class)
+    public function load($class)
     {
-        if (!class_exists($class, false)) {
-            $file = str_replace('_', '/', $class) . '.php';
-            include_once $file;
-            if (!class_exists($class, false)) {
-                throw new Stagehand_Autoload_Exception(
-                    'Class ' .
-                    $class .
-                    ' was not present in ' .
-                    $file .
-                    ', (include_path="' .
-                    get_include_path() .
-                    '")'
-                                                       );
-            }
+        if (strpos($class, '.') !== false) {
+            return false;
         }
 
-        if (array_key_exists($class, self::$cache)) {
-            return self::$cache[$class];
+        $file = str_replace($this->namespaceSeparator, '/', $class) . '.php';
+        $oldErrorReportingLevel = error_reporting(error_reporting() & ~E_WARNING);
+        $result = include $file;
+        error_reporting($oldErrorReportingLevel);
+        if ($result === false) {
+            return false;
         }
 
-        self::$cache[$class] = new $class();
-        return self::$cache[$class];
+        if (!class_exists($class, false) && !interface_exists($class, false)) {
+            trigger_error(
+                'Class ' .
+                $class .
+                ' was not present in ' .
+                $classFile .
+                ', (include_path="' .
+                get_include_path() .
+                '")',
+                E_USER_WARNING
+                          );
+            return false;
+        }
+
+        return true;
     }
 
     /**#@-*/

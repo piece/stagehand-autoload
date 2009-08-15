@@ -4,7 +4,7 @@
 /**
  * PHP version 5
  *
- * Copyright (c) 2008 KUBO Atsuhiro <iteman@users.sourceforge.net>,
+ * Copyright (c) 2009 KUBO Atsuhiro <iteman@users.sourceforge.net>,
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,35 +29,26 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @package    Stagehand_Autoload
- * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License (revised)
- * @version    SVN: $Id$
- * @since      File available since Release 0.1.0
+ * @copyright  2009 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
+ * @version    Release: @package_version@
+ * @since      File available since Release 0.3.0
  */
 
-require_once 'Stagehand/Autoload/Exception.php';
 require_once 'Stagehand/Autoload/Loader.php';
 
-// {{{ Stagehand_Autoload
+// {{{ Stagehand_Autoload_Loader_NamespaceLoader
 
 /**
- * A utility to register class loaders to the SPL autoload queue.
- *
  * @package    Stagehand_Autoload
- * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License (revised)
+ * @copyright  2009 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
- * @since      File available since Release 0.1.0
+ * @since      File available since Release 0.3.0
  */
-class Stagehand_Autoload
+class Stagehand_Autoload_Loader_NamespaceLoader extends Stagehand_Autoload_Loader
 {
 
-    // {{{ constants
-
-    const LOADER_LEGACY = 'Stagehand_Autoload_Loader_LegacyLoader';
-    const LOADER_NAMESPACE = 'Stagehand_Autoload_Loader_NamespaceLoader';
-
-    // }}}
     // {{{ properties
 
     /**#@+
@@ -70,13 +61,15 @@ class Stagehand_Autoload
      * @access protected
      */
 
+    protected $namespaceSeparator = '\\';
+
     /**#@-*/
 
     /**#@+
      * @access private
      */
 
-    private static $cache = array();
+    private $namespaces = array();
 
     /**#@-*/
 
@@ -85,52 +78,48 @@ class Stagehand_Autoload
      */
 
     // }}}
-    // {{{ register()
+    // {{{ load()
 
     /**
-     * @param Stagehand_Autoload_Loader $loader
-     */
-    public static function register(Stagehand_Autoload_Loader $loader)
-    {
-        if (function_exists('__autoload')) {
-            spl_autoload_register('__autoload');
-        }
-
-        spl_autoload_register(array($loader, 'load'));
-    }
-
-    // }}}
-    // {{{ getLoader()
-
-    /**
+     * Loads an appropriate class.
+     *
      * @param string $class
-     * @return Stagehand_Autoload_Loader
-     * @throws Stagehand_Autoload_Exception
+     * @return boolean
      */
-    public static function getLoader($class)
+    public function load($class)
     {
-        if (!class_exists($class, false)) {
-            $file = str_replace('_', '/', $class) . '.php';
-            include_once $file;
-            if (!class_exists($class, false)) {
-                throw new Stagehand_Autoload_Exception(
-                    'Class ' .
-                    $class .
-                    ' was not present in ' .
-                    $file .
-                    ', (include_path="' .
-                    get_include_path() .
-                    '")'
-                                                       );
+        $found = false;
+        foreach ($this->namespaces as $namespace) {
+            $pattern =
+                '/^' . $namespace . preg_quote($this->namespaceSeparator) . '/';
+            if (preg_match($pattern, $class)) {
+                $found = true;
+                break;
             }
         }
 
-        if (array_key_exists($class, self::$cache)) {
-            return self::$cache[$class];
+        if (!$found) {
+            return false;
         }
 
-        self::$cache[$class] = new $class();
-        return self::$cache[$class];
+        return parent::load($class);
+    }
+
+    // }}}
+    // {{{ addNamespace()
+
+    /**
+     * Adds a namespace to the targets for autoloading.
+     *
+     * @param string $namespace
+     */
+    public function addNamespace($namespace)
+    {
+        if (in_array($namespace, $this->namespaces)) {
+            return;
+        }
+
+        array_unshift($this->namespaces, $namespace);
     }
 
     /**#@-*/
