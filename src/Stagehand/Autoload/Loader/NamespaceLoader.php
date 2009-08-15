@@ -32,7 +32,7 @@
  * @copyright  2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
- * @since      File available since Release 0.3.0
+ * @since      File available since Release 0.2.0
  */
 
 require_once 'Stagehand/Autoload/Loader.php';
@@ -44,7 +44,7 @@ require_once 'Stagehand/Autoload/Loader.php';
  * @copyright  2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
- * @since      File available since Release 0.3.0
+ * @since      File available since Release 0.2.0
  */
 class Stagehand_Autoload_Loader_NamespaceLoader extends Stagehand_Autoload_Loader
 {
