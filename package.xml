@@ -1,30 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.8.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
  <name>Stagehand_Autoload</name>
  <channel>pear.piece-framework.com</channel>
- <summary>Class loaders for classes with namespaces/the PEAR class naming convention</summary>
- <description>Stagehand_Autoload is class loaders for classes with namespaces/the PEAR class naming convention.</description>
+ <summary>Class loaders for autoloading</summary>
+ <description>Stagehand_Autoload provides class loaders for autoloading classes and interfaces which are based on the Package\Class or Package_Class style naming conventions.</description>
  <lead>
   <name>KUBO Atsuhiro</name>
   <user>iteman</user>
-  <email>iteman@users.sourceforge.net</email>
+  <email>kubo@iteman.jp</email>
   <active>yes</active>
  </lead>
- <date>2008-11-25</date>
- <time>23:20:39</time>
+ <date>2009-08-20</date>
+ <time>18:46:03</time>
  <version>
-  <release>0.1.0</release>
-  <api>0.1.0</api>
+  <release>0.2.0</release>
+  <api>0.2.0</api>
  </version>
  <stability>
   <release>beta</release>
   <api>beta</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
- <notes>The first beta release of Stagehand_Autoload.</notes>
+ <notes>
+Release Date: 2009-08-20
+
+What&apos;s New in Stagehand_Autoload 0.2.0
+
+ New APIs:
+
+  The following new APIs have been added to use autoload more explicitly:
+
+   * Stagehand_Autoload::register()
+   * Stagehand_Autoload::getLoader()
+   * Stagehand_Autoload_Loader_LegacyLoader for the Package_Class style naming convension
+   * Stagehand_Autoload_Loader_NamespaceLoader for the Package\Class style naming convension for PHP 5.3
+
+For more information, see the Reference Guide.
+ </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <dir name="doc">
@@ -35,7 +50,18 @@
    <dir name="src">
     <dir name="Stagehand">
      <dir name="Autoload">
-      <file name="PEAR.php" role="php">
+      <dir name="Loader">
+       <file name="LegacyLoader.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+       <file name="NamespaceLoader.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+      </dir> <!-- /src/Stagehand/Autoload/Loader -->
+      <file name="Exception.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="Loader.php" role="php">
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
      </dir> <!-- /src/Stagehand/Autoload -->
@@ -66,6 +92,34 @@
  <changelog>
   <release>
    <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-08-20</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+Release Date: 2009-08-20
+
+What&apos;s New in Stagehand_Autoload 0.2.0
+
+ New APIs:
+
+  The following new APIs have been added to use autoload more explicitly:
+
+   * Stagehand_Autoload::register()
+   * Stagehand_Autoload::getLoader()
+   * Stagehand_Autoload_Loader_LegacyLoader for the Package_Class style naming convension
+   * Stagehand_Autoload_Loader_NamespaceLoader for the Package\Class style naming convension for PHP 5.3
+
+For more information, see the Reference Guide.
+   </notes>
+  </release>
+  <release>
+   <version>
     <release>0.1.0</release>
     <api>0.1.0</api>
    </version>
@@ -75,7 +129,9 @@
    </stability>
    <date>2008-11-25</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
-   <notes>The first beta release of Stagehand_Autoload.</notes>
+   <notes>
+The first beta release of Stagehand_Autoload.
+   </notes>
   </release>
  </changelog>
 </package>

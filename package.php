@@ -40,11 +40,22 @@ require_once 'PEAR.php';
 
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
 
-$releaseVersion = '0.1.0';
+$releaseVersion = '0.2.0';
 $releaseStability = 'beta';
-$apiVersion = '0.1.0';
+$apiVersion = '0.2.0';
 $apiStability = 'beta';
-$notes = 'The first beta release of Stagehand_Autoload.';
+$notes = "What's New in Stagehand_Autoload 0.2.0
+
+ New APIs:
+
+  The following new APIs have been added to use autoload more explicitly:
+
+   * Stagehand_Autoload::register()
+   * Stagehand_Autoload::getLoader()
+   * Stagehand_Autoload_Loader_LegacyLoader for the Package_Class style naming convension
+   * Stagehand_Autoload_Loader_NamespaceLoader for the Package\Class style naming convension for PHP 5.3
+
+For more information, see the Reference Guide.";
 
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'file',
@@ -61,7 +72,7 @@ $package->setOptions(array('filelistgenerator' => 'file',
 $package->setPackage('Stagehand_Autoload');
 $package->setPackageType('php');
 $package->setSummary('Class loaders for autoloading');
-$package->setDescription('Stagehand_Autoload provides class loaders for autoloading classes and interfaces corresponding to the Package\Class or Package_Class style naming conventions.');
+$package->setDescription('Stagehand_Autoload provides class loaders for autoloading classes and interfaces which are based on the Package\Class or Package_Class style naming conventions.');
 $package->setChannel('pear.piece-framework.com');
 $package->setLicense('New BSD License', 'http://www.opensource.org/licenses/bsd-license.php');
 $package->setAPIVersion($apiVersion);
