@@ -60,6 +60,7 @@ abstract class Stagehand_Autoload_Loader
      */
 
     protected $namespaceSeparator;
+    protected $namespaces = array();
 
     /**#@-*/
 
@@ -88,6 +89,20 @@ abstract class Stagehand_Autoload_Loader
             return false;
         }
 
+        $found = false;
+        foreach ($this->namespaces as $namespace) {
+            $pattern =
+                '/^' . $namespace . preg_quote($this->namespaceSeparator) . '/';
+            if (preg_match($pattern, $class)) {
+                $found = true;
+                break;
+            }
+        }
+
+        if (!$found) {
+            return false;
+        }
+
         $file = str_replace($this->namespaceSeparator, '/', $class) . '.php';
         $oldErrorReportingLevel = error_reporting(error_reporting() & ~E_WARNING);
         $result = include $file;
@@ -111,6 +126,23 @@ abstract class Stagehand_Autoload_Loader
         }
 
         return true;
+    }
+
+    // }}}
+    // {{{ addNamespace()
+
+    /**
+     * Adds a namespace to the targets for autoloading.
+     *
+     * @param string $namespace
+     */
+    public function addNamespace($namespace)
+    {
+        if (in_array($namespace, $this->namespaces)) {
+            return;
+        }
+
+        array_unshift($this->namespaces, $namespace);
     }
 
     /**#@-*/

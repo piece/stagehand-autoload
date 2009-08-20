@@ -69,58 +69,11 @@ class Stagehand_Autoload_Loader_NamespaceLoader extends Stagehand_Autoload_Loade
      * @access private
      */
 
-    private $namespaces = array();
-
     /**#@-*/
 
     /**#@+
      * @access public
      */
-
-    // }}}
-    // {{{ load()
-
-    /**
-     * Loads an appropriate class.
-     *
-     * @param string $class
-     * @return boolean
-     */
-    public function load($class)
-    {
-        $found = false;
-        foreach ($this->namespaces as $namespace) {
-            $pattern =
-                '/^' . $namespace . preg_quote($this->namespaceSeparator) . '/';
-            if (preg_match($pattern, $class)) {
-                $found = true;
-                break;
-            }
-        }
-
-        if (!$found) {
-            return false;
-        }
-
-        return parent::load($class);
-    }
-
-    // }}}
-    // {{{ addNamespace()
-
-    /**
-     * Adds a namespace to the targets for autoloading.
-     *
-     * @param string $namespace
-     */
-    public function addNamespace($namespace)
-    {
-        if (in_array($namespace, $this->namespaces)) {
-            return;
-        }
-
-        array_unshift($this->namespaces, $namespace);
-    }
 
     /**#@-*/
 
