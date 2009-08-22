@@ -133,6 +133,30 @@ class Stagehand_Autoload
         return self::$cache[$class];
     }
 
+    // }}}
+    // {{{ getLegacyLoader()
+
+    /**
+     * @return Stagehand_Autoload_Loader
+     * @since Method available since Release 0.3.0
+     */
+    public static function getLegacyLoader()
+    {
+        return self::getLoader(self::LOADER_LEGACY);
+    }
+
+    // }}}
+    // {{{ getNamespaceLoader()
+
+    /**
+     * @return Stagehand_Autoload_Loader
+     * @since Method available since Release 0.3.0
+     */
+    public static function getNamespaceLoader()
+    {
+        return self::getLoader(self::LOADER_NAMESPACE);
+    }
+
     /**#@-*/
 
     /**#@+
