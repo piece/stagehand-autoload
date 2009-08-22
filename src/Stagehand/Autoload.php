@@ -89,6 +89,7 @@ class Stagehand_Autoload
 
     /**
      * @param Stagehand_Autoload_Loader $loader
+     * @since Method available since Release 0.2.0
      */
     public static function register(Stagehand_Autoload_Loader $loader)
     {
@@ -106,6 +107,7 @@ class Stagehand_Autoload
      * @param string $class
      * @return Stagehand_Autoload_Loader
      * @throws Stagehand_Autoload_Exception
+     * @since Method available since Release 0.2.0
      */
     public static function getLoader($class)
     {
