@@ -44,7 +44,7 @@ $releaseVersion = '0.3.0';
 $releaseStability = 'beta';
 $apiVersion = '0.3.0';
 $apiStability = 'beta';
-$notes = "What's New in Stagehand_Autoload 0.2.0
+$notes = "What's New in Stagehand_Autoload 0.3.0
 
  getLegacyLoader() and getNamespaceLoader():
 
