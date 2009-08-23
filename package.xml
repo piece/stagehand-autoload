@@ -13,11 +13,11 @@
   <email>kubo@iteman.jp</email>
   <active>yes</active>
  </lead>
- <date>2009-08-20</date>
- <time>18:46:03</time>
+ <date>2009-08-23</date>
+ <time>21:23:46</time>
  <version>
-  <release>0.2.0</release>
-  <api>0.2.0</api>
+  <release>0.3.0</release>
+  <api>0.3.0</api>
  </version>
  <stability>
   <release>beta</release>
@@ -25,20 +25,25 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
  <notes>
-Release Date: 2009-08-20
-
 What&apos;s New in Stagehand_Autoload 0.2.0
 
- New APIs:
+ getLegacyLoader() and getNamespaceLoader():
 
-  The following new APIs have been added to use autoload more explicitly:
+  The following utility methods is now available for getting the built-in loaders:
 
-   * Stagehand_Autoload::register()
-   * Stagehand_Autoload::getLoader()
-   * Stagehand_Autoload_Loader_LegacyLoader for the Package_Class style naming convension
-   * Stagehand_Autoload_Loader_NamespaceLoader for the Package\Class style naming convension for PHP 5.3
+   * getLegacyLoader() for the legacy loader
+   * getNamespaceLoader() for the namespace loader
 
-For more information, see the Reference Guide.
+ Namespace support for the legacy loader:
+
+  To autoload classes/interfaces, specify one or more namespaces same as the namespace loader.
+
+   $loader = Stagehand_Autoload::getLegacyLoader();
+   $loader-&gt;addNamespace(&apos;Stagehand&apos;);
+   $loader-&gt;addNamespace(&apos;Piece&apos;);
+   Stagehand_Autoload::register();
+
+  Any classes/interfaces no longer be loaded automatically without specifying namespaces.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -90,6 +95,39 @@ For more information, see the Reference Guide.
  </dependencies>
  <phprelease />
  <changelog>
+  <release>
+   <version>
+    <release>0.3.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-08-23</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+What&apos;s New in Stagehand_Autoload 0.2.0
+
+ getLegacyLoader() and getNamespaceLoader():
+
+  The following utility methods is now available for getting the built-in loaders:
+
+   * getLegacyLoader() for the legacy loader
+   * getNamespaceLoader() for the namespace loader
+
+ Namespace support for the legacy loader:
+
+  To autoload classes/interfaces, specify one or more namespaces same as the namespace loader.
+
+   $loader = Stagehand_Autoload::getLegacyLoader();
+   $loader-&gt;addNamespace(&apos;Stagehand&apos;);
+   $loader-&gt;addNamespace(&apos;Piece&apos;);
+   Stagehand_Autoload::register();
+
+  Any classes/interfaces no longer be loaded automatically without specifying namespaces.
+   </notes>
+  </release>
   <release>
    <version>
     <release>0.2.0</release>

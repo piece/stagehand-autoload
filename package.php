@@ -40,22 +40,29 @@ require_once 'PEAR.php';
 
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
 
-$releaseVersion = '0.2.0';
+$releaseVersion = '0.3.0';
 $releaseStability = 'beta';
-$apiVersion = '0.2.0';
+$apiVersion = '0.3.0';
 $apiStability = 'beta';
 $notes = "What's New in Stagehand_Autoload 0.2.0
 
- New APIs:
+ getLegacyLoader() and getNamespaceLoader():
 
-  The following new APIs have been added to use autoload more explicitly:
+  The following utility methods is now available for getting the built-in loaders:
 
-   * Stagehand_Autoload::register()
-   * Stagehand_Autoload::getLoader()
-   * Stagehand_Autoload_Loader_LegacyLoader for the Package_Class style naming convension
-   * Stagehand_Autoload_Loader_NamespaceLoader for the Package\Class style naming convension for PHP 5.3
+   * getLegacyLoader() for the legacy loader
+   * getNamespaceLoader() for the namespace loader
 
-For more information, see the Reference Guide.";
+ Namespace support for the legacy loader:
+
+  To autoload classes/interfaces, specify one or more namespaces same as the namespace loader.
+
+   \$loader = Stagehand_Autoload::getLegacyLoader();
+   \$loader->addNamespace('Stagehand');
+   \$loader->addNamespace('Piece');
+   Stagehand_Autoload::register($loader);
+
+  Any classes/interfaces no longer be loaded automatically without specifying namespaces.";
 
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'file',
