@@ -44,7 +44,7 @@ $releaseVersion = '0.3.0';
 $releaseStability = 'beta';
 $apiVersion = '0.3.0';
 $apiStability = 'beta';
-$notes = "What's New in Stagehand_Autoload 0.3.0
+$notes = 'What\'s New in Stagehand_Autoload 0.3.0
 
  getLegacyLoader() and getNamespaceLoader():
 
@@ -57,12 +57,12 @@ $notes = "What's New in Stagehand_Autoload 0.3.0
 
   To autoload classes/interfaces, specify one or more namespaces same as the namespace loader.
 
-   \$loader = Stagehand_Autoload::getLegacyLoader();
-   \$loader->addNamespace('Stagehand');
-   \$loader->addNamespace('Piece');
+   $loader = Stagehand_Autoload::getLegacyLoader();
+   $loader->addNamespace(\'Stagehand\');
+   $loader->addNamespace(\'Piece\');
    Stagehand_Autoload::register($loader);
 
-  Any classes/interfaces no longer be loaded automatically without specifying namespaces.";
+  Any classes/interfaces no longer be loaded automatically without specifying namespaces.';
 
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'file',
