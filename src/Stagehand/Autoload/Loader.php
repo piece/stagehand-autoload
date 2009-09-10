@@ -116,7 +116,7 @@ abstract class Stagehand_Autoload_Loader
                 'Class ' .
                 $class .
                 ' was not present in ' .
-                $classFile .
+                $file .
                 ', (include_path="' .
                 get_include_path() .
                 '")',
