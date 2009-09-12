@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.8.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -13,10 +13,10 @@
   <email>kubo@iteman.jp</email>
   <active>yes</active>
  </lead>
- <date>2009-08-23</date>
- <time>21:31:40</time>
+ <date>2009-09-13</date>
+ <time>02:33:39</time>
  <version>
-  <release>0.3.0</release>
+  <release>0.4.0</release>
   <api>0.3.0</api>
  </version>
  <stability>
@@ -25,25 +25,16 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
  <notes>
-What&apos;s New in Stagehand_Autoload 0.3.0
+What&apos;s New in Stagehand_Autoload 0.4.0
 
- getLegacyLoader() and getNamespaceLoader():
+ New APIs for getting built-in loaders:
 
-  The following utility methods is now available for getting the built-in loaders:
+  The following methods are now available for getting the built-in loaders:
 
-   * getLegacyLoader() for the legacy loader
-   * getNamespaceLoader() for the namespace loader
+   * Stagehand_Autoload::legacyLoader() which replaces Stagehand_Autoload::getLegacyLoader()
+   * Stagehand_Autoload::namespaceLoader() which replaces Stagehand_Autoload::getNamespaceLoader()
 
- Namespace support for the legacy loader:
-
-  To autoload classes/interfaces, specify one or more namespaces same as the namespace loader.
-
-   $loader = Stagehand_Autoload::getLegacyLoader();
-   $loader-&gt;addNamespace(&apos;Stagehand&apos;);
-   $loader-&gt;addNamespace(&apos;Piece&apos;);
-   Stagehand_Autoload::register($loader);
-
-  Any classes/interfaces no longer be loaded automatically without specifying namespaces.
+  The old APIs Stagehand_Autoload::getLegacyLoader() and Stagehand_Autoload::getNamespaceLoader() have been deprecated, and these will be removed in after this release.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -95,6 +86,30 @@ What&apos;s New in Stagehand_Autoload 0.3.0
  </dependencies>
  <phprelease />
  <changelog>
+  <release>
+   <version>
+    <release>0.4.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-09-13</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+What&apos;s New in Stagehand_Autoload 0.4.0
+
+ New APIs for getting built-in loaders:
+
+  The following methods are now available for getting the built-in loaders:
+
+   * Stagehand_Autoload::legacyLoader() which replaces Stagehand_Autoload::getLegacyLoader()
+   * Stagehand_Autoload::namespaceLoader() which replaces Stagehand_Autoload::getNamespaceLoader()
+
+  The old APIs Stagehand_Autoload::getLegacyLoader() and Stagehand_Autoload::getNamespaceLoader() have been deprecated, and these will be removed in after this release.
+   </notes>
+  </release>
   <release>
    <version>
     <release>0.3.0</release>

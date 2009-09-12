@@ -40,29 +40,20 @@ require_once 'PEAR.php';
 
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
 
-$releaseVersion = '0.3.0';
+$releaseVersion = '0.4.0';
 $releaseStability = 'beta';
 $apiVersion = '0.3.0';
 $apiStability = 'beta';
-$notes = 'What\'s New in Stagehand_Autoload 0.3.0
+$notes = 'What\'s New in Stagehand_Autoload 0.4.0
 
- getLegacyLoader() and getNamespaceLoader():
+ New APIs for getting built-in loaders:
 
-  The following utility methods is now available for getting the built-in loaders:
+  The following methods are now available for getting the built-in loaders:
 
-   * getLegacyLoader() for the legacy loader
-   * getNamespaceLoader() for the namespace loader
+   * Stagehand_Autoload::legacyLoader() which replaces Stagehand_Autoload::getLegacyLoader()
+   * Stagehand_Autoload::namespaceLoader() which replaces Stagehand_Autoload::getNamespaceLoader()
 
- Namespace support for the legacy loader:
-
-  To autoload classes/interfaces, specify one or more namespaces same as the namespace loader.
-
-   $loader = Stagehand_Autoload::getLegacyLoader();
-   $loader->addNamespace(\'Stagehand\');
-   $loader->addNamespace(\'Piece\');
-   Stagehand_Autoload::register($loader);
-
-  Any classes/interfaces no longer be loaded automatically without specifying namespaces.';
+  The old APIs Stagehand_Autoload::getLegacyLoader() and Stagehand_Autoload::getNamespaceLoader() have been deprecated, and these will be removed in after this release.';
 
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'file',
