@@ -141,8 +141,21 @@ class Stagehand_Autoload
     /**
      * @return Stagehand_Autoload_Loader
      * @since Method available since Release 0.3.0
+     * @deprecated Method deprecated in Release 0.4.0
      */
     public static function getLegacyLoader()
+    {
+        return self::legacyLoader();
+    }
+
+    // }}}
+    // {{{ legacyLoader()
+
+    /**
+     * @return Stagehand_Autoload_Loader
+     * @since Method available since Release 0.4.0
+     */
+    public static function legacyLoader()
     {
         return self::getLoader(self::LOADER_LEGACY);
     }
@@ -153,8 +166,21 @@ class Stagehand_Autoload
     /**
      * @return Stagehand_Autoload_Loader
      * @since Method available since Release 0.3.0
+     * @deprecated Method deprecated in Release 0.4.0
      */
     public static function getNamespaceLoader()
+    {
+        return self::namespaceLoader();
+    }
+
+    // }}}
+    // {{{ namespaceLoader()
+
+    /**
+     * @return Stagehand_Autoload_Loader
+     * @since Method available since Release 0.4.0
+     */
+    public static function namespaceLoader()
     {
         return self::getLoader(self::LOADER_NAMESPACE);
     }
