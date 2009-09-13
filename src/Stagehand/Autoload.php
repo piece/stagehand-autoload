@@ -136,19 +136,6 @@ class Stagehand_Autoload
     }
 
     // }}}
-    // {{{ getLegacyLoader()
-
-    /**
-     * @return Stagehand_Autoload_Loader
-     * @since Method available since Release 0.3.0
-     * @deprecated Method deprecated in Release 0.4.0
-     */
-    public static function getLegacyLoader()
-    {
-        return self::legacyLoader();
-    }
-
-    // }}}
     // {{{ legacyLoader()
 
     /**
@@ -158,19 +145,6 @@ class Stagehand_Autoload
     public static function legacyLoader()
     {
         return self::getLoader(self::LOADER_LEGACY);
-    }
-
-    // }}}
-    // {{{ getNamespaceLoader()
-
-    /**
-     * @return Stagehand_Autoload_Loader
-     * @since Method available since Release 0.3.0
-     * @deprecated Method deprecated in Release 0.4.0
-     */
-    public static function getNamespaceLoader()
-    {
-        return self::namespaceLoader();
     }
 
     // }}}
