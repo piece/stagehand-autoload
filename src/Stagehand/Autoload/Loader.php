@@ -105,7 +105,7 @@ abstract class Stagehand_Autoload_Loader
 
         $file = str_replace($this->namespaceSeparator, '/', $class) . '.php';
         $oldErrorReportingLevel = error_reporting(error_reporting() & ~E_WARNING);
-        $result = include $file;
+        $result = $this->loadFile($file);
         error_reporting($oldErrorReportingLevel);
         if ($result === false) {
             return false;
@@ -150,6 +150,18 @@ abstract class Stagehand_Autoload_Loader
     /**#@+
      * @access protected
      */
+
+    // }}}
+    // {{{ loadFile()
+
+    /**
+     * @param string $file
+     * @return boolean
+     */
+    protected function loadFile($file)
+    {
+        return include $file;
+    }
 
     /**#@-*/
 
