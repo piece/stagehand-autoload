@@ -1,0 +1,4 @@
+#Fri Jan 01 15:58:35 JST 2010
+eclipse.preferences.version=1
+preload_script=/stagehand-autoload/tests/prepare.php
+testing_framework=PHPUnit
