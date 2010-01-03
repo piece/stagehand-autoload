@@ -92,7 +92,7 @@ abstract class Stagehand_Autoload_Loader
         $found = false;
         foreach ($this->namespaces as $namespace) {
             $pattern =
-                '/^' . $namespace . preg_quote($this->namespaceSeparator) . '/';
+                '/^' . preg_quote($namespace . $this->namespaceSeparator) . '/';
             if (preg_match($pattern, $class)) {
                 $found = true;
                 break;
