@@ -32,7 +32,7 @@
  * @copyright  2010 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
- * @since      File available since Release 1.0.0
+ * @since      File available since Release 0.5.0
  */
 
 require_once 'Stagehand/Autoload.php';
@@ -44,7 +44,7 @@ require_once 'Stagehand/Autoload.php';
  * @copyright  2010 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
- * @since      Class available since Release 1.0.0
+ * @since      Class available since Release 0.5.0
  */
 class Stagehand_AutoloadTest extends PHPUnit_Framework_TestCase
 {
