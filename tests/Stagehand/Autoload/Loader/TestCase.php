@@ -35,7 +35,7 @@
  * @since      File available since Release 0.5.0
  */
 
-// {{{ Stagehand_Autoload_Loader_LegacyLoaderTest
+// {{{ Stagehand_Autoload_Loader_TestCase
 
 /**
  * @package    Stagehand_Autoload
@@ -44,7 +44,7 @@
  * @version    Release: @package_version@
  * @since      Class available since Release 0.5.0
  */
-class Stagehand_Autoload_Loader_LegacyLoaderTest extends Stagehand_Autoload_Loader_TestCase
+abstract class Stagehand_Autoload_Loader_TestCase extends PHPUnit_Framework_TestCase
 {
 
     // {{{ properties
@@ -59,6 +59,9 @@ class Stagehand_Autoload_Loader_LegacyLoaderTest extends Stagehand_Autoload_Load
      * @access protected
      */
 
+    protected $oldIncludePath;
+    protected $testClass;
+
     /**#@-*/
 
     /**#@+
@@ -71,15 +74,36 @@ class Stagehand_Autoload_Loader_LegacyLoaderTest extends Stagehand_Autoload_Load
      * @access public
      */
 
+    public function setUp()
+    {
+        $this->testClass = substr(get_class($this), strrpos(get_class($this), '_') + 1);
+        $this->oldIncludePath =
+            set_include_path(
+                dirname(__FILE__) . '/' . $this->testClass . PATH_SEPARATOR .
+                get_include_path()
+            );
+    }
+
+    public function tearDown()
+    {
+        set_include_path($this->oldIncludePath);
+    }
+
     /**
      * @test
      */
-    public function load()
+    public function hasTheQueuingNamespaces()
     {
-        $loader = new Stagehand_Autoload_Loader_LegacyLoader();
-        $loader->addNamespace('Stagehand_Autoload_Loader_LegacyLoaderTest');
-        $this->assertTrue($loader->load('Stagehand_Autoload_Loader_LegacyLoaderTest_Foo'));
-        $this->assertTrue(class_exists('Stagehand_Autoload_Loader_LegacyLoaderTest_Foo', false));
+        $mockClass = get_class($this) . '_Mock' . substr($this->testClass, 0, -4);
+        $loader = new $mockClass();
+        $loader->addNamespace('Foo');
+        $loader->addNamespace('Bar');
+        $this->assertFalse($loader->load('Baz'));
+
+        $processedNamespaces = $loader->getProcessedNamespaces();
+        $this->assertEquals(2, count($processedNamespaces));
+        $this->assertEquals('Foo', $processedNamespaces[0]);
+        $this->assertEquals('Bar', $processedNamespaces[1]);
     }
 
     /**#@-*/

@@ -44,7 +44,7 @@
  * @version    Release: @package_version@
  * @since      Class available since Release 0.5.0
  */
-class Stagehand_Autoload_Loader_NamespaceLoaderTest extends PHPUnit_Framework_TestCase
+class Stagehand_Autoload_Loader_NamespaceLoaderTest extends Stagehand_Autoload_Loader_TestCase
 {
 
     // {{{ properties
@@ -59,8 +59,6 @@ class Stagehand_Autoload_Loader_NamespaceLoaderTest extends PHPUnit_Framework_Te
      * @access protected
      */
 
-    protected $oldIncludePath;
-
     /**#@-*/
 
     /**#@+
@@ -73,20 +71,6 @@ class Stagehand_Autoload_Loader_NamespaceLoaderTest extends PHPUnit_Framework_Te
      * @access public
      */
 
-    public function setUp()
-    {
-        $this->oldIncludePath =
-            set_include_path(
-                dirname(__FILE__) . '/' . basename(__FILE__, '.php') . PATH_SEPARATOR .
-                get_include_path()
-            );
-    }
-
-    public function tearDown()
-    {
-        set_include_path($this->oldIncludePath);
-    }
-
     /**
      * @test
      */
@@ -98,22 +82,6 @@ class Stagehand_Autoload_Loader_NamespaceLoaderTest extends PHPUnit_Framework_Te
         $this->assertTrue($loader->load('Stagehand\Autoload\Loader\NamespaceLoaderTest\Foo'));
         $this->assertTrue(class_exists('\Stagehand\Autoload\Loader\NamespaceLoaderTest\Foo', false));
         $this->assertTrue(class_exists('Stagehand\Autoload\Loader\NamespaceLoaderTest\Foo', false));
-    }
-
-    /**
-     * @test
-     */
-    public function hasTheQueuingNamespaces()
-    {
-        $loader = new Stagehand_Autoload_Loader_NamespaceLoaderTest_MockNamespaceLoader();
-        $loader->addNamespace('Foo');
-        $loader->addNamespace('Bar');
-        $this->assertFalse($loader->load('Baz'));
-
-        $processedNamespaces = $loader->getProcessedNamespaces();
-        $this->assertEquals(2, count($processedNamespaces));
-        $this->assertEquals('Foo', $processedNamespaces[0]);
-        $this->assertEquals('Bar', $processedNamespaces[1]);
     }
 
     /**#@-*/
