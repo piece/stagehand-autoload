@@ -4,7 +4,7 @@
 /**
  * PHP version 5
  *
- * Copyright (c) 2009 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2010 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,85 +29,22 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @package    Stagehand_Autoload
- * @copyright  2009 KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2010 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
- * @since      File available since Release 0.2.0
+ * @since      File available since Release 0.5.0
  */
 
-require_once 'Stagehand/Autoload/Loader.php';
-
-// {{{ Stagehand_Autoload_Loader_NamespaceLoader
+// {{{ Stagehand_Autoload_Loader_LegacyLoaderTest_Foo
 
 /**
  * @package    Stagehand_Autoload
- * @copyright  2009 KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2010 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
- * @since      File available since Release 0.2.0
+ * @since      Class available since Release 0.5.0
  */
-class Stagehand_Autoload_Loader_NamespaceLoader extends Stagehand_Autoload_Loader
-{
-
-    // {{{ properties
-
-    /**#@+
-     * @access public
-     */
-
-    /**#@-*/
-
-    /**#@+
-     * @access protected
-     */
-
-    protected $namespaceSeparator = '\\';
-
-    /**#@-*/
-
-    /**#@+
-     * @access private
-     */
-
-    /**#@-*/
-
-    /**#@+
-     * @access public
-     */
-
-    /**#@-*/
-
-    /**#@+
-     * @access protected
-     */
-
-    // }}}
-    // {{{ normalizeClassName()
-
-    /**
-     * @param string $class
-     * @return string
-     * @since Method available since Release 0.5.0
-     */
-    protected function normalizeClassName($class)
-    {
-        if (substr($class, 0, 1) == $this->namespaceSeparator) {
-            return substr($class, 1);
-        }
-
-        return parent::normalizeClassName($class);
-    }
-
-    /**#@-*/
-
-    /**#@+
-     * @access private
-     */
-
-    /**#@-*/
-
-    // }}}
-}
+class Stagehand_Autoload_Loader_LegacyLoaderTest_Foo {}
 
 // }}}
 

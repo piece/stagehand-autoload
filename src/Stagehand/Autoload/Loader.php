@@ -89,17 +89,12 @@ abstract class Stagehand_Autoload_Loader
             return false;
         }
 
-        $found = false;
-        foreach ($this->namespaces as $namespace) {
-            $pattern =
-                '/^' . preg_quote($namespace . $this->namespaceSeparator) . '/';
-            if (preg_match($pattern, $class)) {
-                $found = true;
-                break;
-            }
+        $class = $this->normalizeClassName($class);
+        if (class_exists($class, false)) {
+            return true;
         }
 
-        if (!$found) {
+        if (!$this->inNamespaces($class)) {
             return false;
         }
 
@@ -142,7 +137,7 @@ abstract class Stagehand_Autoload_Loader
             return;
         }
 
-        array_unshift($this->namespaces, $namespace);
+        $this->namespaces[] = $namespace;
     }
 
     /**#@-*/
@@ -161,6 +156,52 @@ abstract class Stagehand_Autoload_Loader
     protected function loadFile($file)
     {
         return include $file;
+    }
+
+    // }}}
+    // {{{ normalizeClassName()
+
+    /**
+     * @param string $class
+     * @return string
+     * @since Method available since Release 0.5.0
+     */
+    protected function normalizeClassName($class)
+    {
+        return $class;
+    }
+
+    // }}}
+    // {{{ inNamespaces()
+
+    /**
+     * @param string $class
+     * @return boolean
+     * @since Method available since Release 0.5.0
+     */
+    protected function inNamespaces($class)
+    {
+        foreach ($this->namespaces as $namespace) {
+            if ($this->matchNamespace($class, $namespace)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // }}}
+    // {{{ matchNamespace()
+
+    /**
+     * @param string $class
+     * @param string $namespace
+     * @return boolean
+     * @since Method available since Release 0.5.0
+     */
+    protected function matchNamespace($class, $namespace)
+    {
+        return (boolean)preg_match('/^' . preg_quote($namespace . $this->namespaceSeparator) . '/', $class);
     }
 
     /**#@-*/

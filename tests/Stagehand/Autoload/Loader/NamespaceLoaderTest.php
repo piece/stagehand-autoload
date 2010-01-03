@@ -4,7 +4,7 @@
 /**
  * PHP version 5
  *
- * Copyright (c) 2009 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2010 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,24 +29,22 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @package    Stagehand_Autoload
- * @copyright  2009 KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2010 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
- * @since      File available since Release 0.2.0
+ * @since      File available since Release 0.5.0
  */
 
-require_once 'Stagehand/Autoload/Loader.php';
-
-// {{{ Stagehand_Autoload_Loader_NamespaceLoader
+// {{{ Stagehand_Autoload_Loader_NamespaceLoaderTest
 
 /**
  * @package    Stagehand_Autoload
- * @copyright  2009 KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2010 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
- * @since      File available since Release 0.2.0
+ * @since      Class available since Release 0.5.0
  */
-class Stagehand_Autoload_Loader_NamespaceLoader extends Stagehand_Autoload_Loader
+class Stagehand_Autoload_Loader_NamespaceLoaderTest extends PHPUnit_Framework_TestCase
 {
 
     // {{{ properties
@@ -61,7 +59,7 @@ class Stagehand_Autoload_Loader_NamespaceLoader extends Stagehand_Autoload_Loade
      * @access protected
      */
 
-    protected $namespaceSeparator = '\\';
+    protected $oldIncludePath;
 
     /**#@-*/
 
@@ -75,28 +73,54 @@ class Stagehand_Autoload_Loader_NamespaceLoader extends Stagehand_Autoload_Loade
      * @access public
      */
 
+    public function setUp()
+    {
+        $this->oldIncludePath =
+            set_include_path(
+                dirname(__FILE__) . '/' . basename(__FILE__, '.php') . PATH_SEPARATOR .
+                get_include_path()
+            );
+    }
+
+    public function tearDown()
+    {
+        set_include_path($this->oldIncludePath);
+    }
+
+    /**
+     * @test
+     */
+    public function load()
+    {
+        $loader = new Stagehand_Autoload_Loader_NamespaceLoader();
+        $loader->addNamespace('Stagehand\Autoload\Loader\NamespaceLoaderTest');
+        $this->assertTrue($loader->load('\Stagehand\Autoload\Loader\NamespaceLoaderTest\Foo'));
+        $this->assertTrue($loader->load('Stagehand\Autoload\Loader\NamespaceLoaderTest\Foo'));
+        $this->assertTrue(class_exists('\Stagehand\Autoload\Loader\NamespaceLoaderTest\Foo', false));
+        $this->assertTrue(class_exists('Stagehand\Autoload\Loader\NamespaceLoaderTest\Foo', false));
+    }
+
+    /**
+     * @test
+     */
+    public function hasTheQueuingNamespaces()
+    {
+        $loader = new Stagehand_Autoload_Loader_NamespaceLoaderTest_MockNamespaceLoader();
+        $loader->addNamespace('Foo');
+        $loader->addNamespace('Bar');
+        $this->assertFalse($loader->load('Baz'));
+
+        $processedNamespaces = $loader->getProcessedNamespaces();
+        $this->assertEquals(2, count($processedNamespaces));
+        $this->assertEquals('Foo', $processedNamespaces[0]);
+        $this->assertEquals('Bar', $processedNamespaces[1]);
+    }
+
     /**#@-*/
 
     /**#@+
      * @access protected
      */
-
-    // }}}
-    // {{{ normalizeClassName()
-
-    /**
-     * @param string $class
-     * @return string
-     * @since Method available since Release 0.5.0
-     */
-    protected function normalizeClassName($class)
-    {
-        if (substr($class, 0, 1) == $this->namespaceSeparator) {
-            return substr($class, 1);
-        }
-
-        return parent::normalizeClassName($class);
-    }
 
     /**#@-*/
 
