@@ -4,7 +4,7 @@
 /**
  * PHP version 5
  *
- * Copyright (c) 2008-2009 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2008-2010 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @package    Stagehand_Autoload
- * @copyright  2008-2009 KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2008-2010 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
  * @since      File available since Release 0.1.0
@@ -40,20 +40,20 @@ require_once 'PEAR.php';
 
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
 
-$releaseVersion = '0.4.0';
+$packageName = 'Stagehand_Autoload';
+$releaseVersion = '0.5.0';
 $releaseStability = 'beta';
 $apiVersion = '0.3.0';
 $apiStability = 'beta';
-$notes = 'What\'s New in Stagehand_Autoload 0.4.0
+$notes = "What's New in $packageName $releaseVersion
 
- New APIs for getting built-in loaders:
+ Searches target namespaces in FIFO order.:
 
-  The following methods are now available for getting the built-in loaders:
+  As of this version, namespaces are searched in FIFO order. (Issue #122)
 
-   * Stagehand_Autoload::legacyLoader() which replaces Stagehand_Autoload::getLegacyLoader()
-   * Stagehand_Autoload::namespaceLoader() which replaces Stagehand_Autoload::getNamespaceLoader()
+ A defect fix:
 
-  The old APIs Stagehand_Autoload::getLegacyLoader() and Stagehand_Autoload::getNamespaceLoader() have been deprecated, and these will be removed in after this release.';
+  A defect has been fixed that caused NamespaceLoader not to work with two or more level nesting target namespaces. (Issue #123)";
 
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'file',
@@ -63,11 +63,12 @@ $package->setOptions(array('filelistgenerator' => 'file',
                            'packagefile'       => 'package.xml',
                            'packagedirectory'  => '.',
                            'dir_roles'         => array('doc' => 'doc',
-                                                        'src' => 'php'),
+                                                        'src' => 'php',
+                                                        'tests' => 'test'),
                            'ignore'            => array('package.php'))
                      );
 
-$package->setPackage('Stagehand_Autoload');
+$package->setPackage($packageName);
 $package->setPackageType('php');
 $package->setSummary('Class loaders for autoloading');
 $package->setDescription('Stagehand_Autoload provides class loaders for autoloading classes and interfaces which are based on the Package\Class or Package_Class style naming conventions.');
@@ -81,7 +82,7 @@ $package->setNotes($notes);
 $package->setPhpDep('5.1.2');
 $package->setPearinstallerDep('1.4.3');
 $package->addExtensionDep('required', 'pcre');
-$package->addExtensionDep('required', 'spl');
+$package->addExtensionDep('required', 'SPL');
 $package->addMaintainer('lead', 'iteman', 'KUBO Atsuhiro', 'kubo@iteman.jp');
 $package->addGlobalReplacement('package-info', '@package_version@', 'version');
 $package->generateContents();

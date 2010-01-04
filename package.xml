@@ -13,10 +13,10 @@
   <email>kubo@iteman.jp</email>
   <active>yes</active>
  </lead>
- <date>2009-09-13</date>
- <time>02:33:39</time>
+ <date>2010-01-05</date>
+ <time>03:01:01</time>
  <version>
-  <release>0.4.0</release>
+  <release>0.5.0</release>
   <api>0.3.0</api>
  </version>
  <stability>
@@ -25,16 +25,15 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
  <notes>
-What&apos;s New in Stagehand_Autoload 0.4.0
+What&apos;s New in Stagehand_Autoload 0.5.0
 
- New APIs for getting built-in loaders:
+ Searches target namespaces in FIFO order.:
 
-  The following methods are now available for getting the built-in loaders:
+  As of this version, namespaces are searched in FIFO order. (Issue #122)
 
-   * Stagehand_Autoload::legacyLoader() which replaces Stagehand_Autoload::getLegacyLoader()
-   * Stagehand_Autoload::namespaceLoader() which replaces Stagehand_Autoload::getNamespaceLoader()
+ A defect fix:
 
-  The old APIs Stagehand_Autoload::getLegacyLoader() and Stagehand_Autoload::getNamespaceLoader() have been deprecated, and these will be removed in after this release.
+  A defect has been fixed that caused NamespaceLoader not to work with two or more level nesting target namespaces. (Issue #123)
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -66,6 +65,53 @@ What&apos;s New in Stagehand_Autoload 0.4.0
      </file>
     </dir> <!-- /src/Stagehand -->
    </dir> <!-- /src -->
+   <dir name="tests">
+    <dir name="Stagehand">
+     <dir name="Autoload">
+      <dir name="Loader">
+       <dir name="LegacyLoaderTest">
+        <file name="Foo.php" role="test">
+         <tasks:replace from="@package_version@" to="version" type="package-info" />
+        </file>
+        <file name="MockLegacyLoader.php" role="test">
+         <tasks:replace from="@package_version@" to="version" type="package-info" />
+        </file>
+       </dir> <!-- /tests/Stagehand/Autoload/Loader/LegacyLoaderTest -->
+       <dir name="NamespaceLoaderTest">
+        <file name="Foo.php" role="test">
+         <tasks:replace from="@package_version@" to="version" type="package-info" />
+        </file>
+        <file name="MockNamespaceLoader.php" role="test">
+         <tasks:replace from="@package_version@" to="version" type="package-info" />
+        </file>
+       </dir> <!-- /tests/Stagehand/Autoload/Loader/NamespaceLoaderTest -->
+       <file name="LegacyLoaderTest.php" role="test">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+       <file name="NamespaceLoaderTest.php" role="test">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+       <file name="TestCase.php" role="test">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+      </dir> <!-- /tests/Stagehand/Autoload/Loader -->
+     </dir> <!-- /tests/Stagehand/Autoload -->
+     <dir name="AutoloadTest">
+      <file name="ClassForLegacyLoader.php" role="test">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="ClassForNamespaceLoader.php" role="test">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+     </dir> <!-- /tests/Stagehand/AutoloadTest -->
+     <file name="AutoloadTest.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+    </dir> <!-- /tests/Stagehand -->
+    <file name="prepare.php" role="test">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+   </dir> <!-- /tests -->
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -80,12 +126,35 @@ What&apos;s New in Stagehand_Autoload 0.4.0
     <name>pcre</name>
    </extension>
    <extension>
-    <name>spl</name>
+    <name>SPL</name>
    </extension>
   </required>
  </dependencies>
  <phprelease />
  <changelog>
+  <release>
+   <version>
+    <release>0.5.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-01-05</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+What&apos;s New in Stagehand_Autoload 0.5.0
+
+ Searches target namespaces in FIFO order.:
+
+  As of this version, namespaces are searched in FIFO order. (Issue #122)
+
+ A defect fix:
+
+  A defect has been fixed that caused NamespaceLoader not to work with two or more level nesting target namespaces. (Issue #123)
+   </notes>
+  </release>
   <release>
    <version>
     <release>0.4.0</release>
