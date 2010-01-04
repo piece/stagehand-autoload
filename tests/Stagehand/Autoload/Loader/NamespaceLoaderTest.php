@@ -35,6 +35,10 @@
  * @since      File available since Release 0.5.0
  */
 
+if (version_compare(phpversion(), '5.3.0', '<')) {
+    return;
+}
+
 // {{{ Stagehand_Autoload_Loader_NamespaceLoaderTest
 
 /**
