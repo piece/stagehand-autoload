@@ -41,19 +41,15 @@ require_once 'PEAR.php';
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
 
 $packageName = 'Stagehand_Autoload';
-$releaseVersion = '0.5.0';
-$releaseStability = 'beta';
+$releaseVersion = '1.0.0';
+$releaseStability = 'stable';
 $apiVersion = '0.3.0';
-$apiStability = 'beta';
+$apiStability = 'stable';
 $notes = "What's New in $packageName $releaseVersion
 
- Searches target namespaces in FIFO order.:
+ The first stable release of Stagehand_Autoload:
 
-  As of this version, namespaces are searched in FIFO order. (Issue #122)
-
- A defect fix:
-
-  A defect has been fixed that caused NamespaceLoader not to work with two or more level nesting target namespaces. (Issue #123)";
+  This is the first release of Stagehand_Autoload. Stagehand_Autoload 1.0.0 is the same as Stagehand_Autoload 0.5.0 except the version number.";
 
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'file',

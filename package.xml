@@ -13,27 +13,23 @@
   <email>kubo@iteman.jp</email>
   <active>yes</active>
  </lead>
- <date>2010-01-05</date>
- <time>03:01:01</time>
+ <date>2010-01-25</date>
+ <time>16:25:02</time>
  <version>
-  <release>0.5.0</release>
+  <release>1.0.0</release>
   <api>0.3.0</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
  <notes>
-What&apos;s New in Stagehand_Autoload 0.5.0
+What&apos;s New in Stagehand_Autoload 1.0.0
 
- Searches target namespaces in FIFO order.:
+ The first stable release of Stagehand_Autoload:
 
-  As of this version, namespaces are searched in FIFO order. (Issue #122)
-
- A defect fix:
-
-  A defect has been fixed that caused NamespaceLoader not to work with two or more level nesting target namespaces. (Issue #123)
+  This is the first release of Stagehand_Autoload. Stagehand_Autoload 1.0.0 is the same as Stagehand_Autoload 0.5.0 except the version number.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -132,6 +128,25 @@ What&apos;s New in Stagehand_Autoload 0.5.0
  </dependencies>
  <phprelease />
  <changelog>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2010-01-25</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+What&apos;s New in Stagehand_Autoload 1.0.0
+
+ The first stable release of Stagehand_Autoload:
+
+  This is the first release of Stagehand_Autoload. Stagehand_Autoload 1.0.0 is the same as Stagehand_Autoload 0.5.0 except the version number.
+   </notes>
+  </release>
   <release>
    <version>
     <release>0.5.0</release>
