@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -13,10 +13,10 @@
   <email>kubo@iteman.jp</email>
   <active>yes</active>
  </lead>
- <date>2010-01-25</date>
- <time>16:25:02</time>
+ <date>2010-09-11</date>
+ <time>02:43:33</time>
  <version>
-  <release>1.0.0</release>
+  <release>1.1.0</release>
   <api>0.3.0</api>
  </version>
  <stability>
@@ -25,90 +25,17 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
  <notes>
-What&apos;s New in Stagehand_Autoload 1.0.0
-
- The first stable release of Stagehand_Autoload:
-
-  This is the first release of Stagehand_Autoload. Stagehand_Autoload 1.0.0 is the same as Stagehand_Autoload 0.5.0 except the version number.
+The features of Stagehand_Autoload 1.1.0 is the same as Stagehand_Autoload 1.0.0 except the version number and the directory structure. As of this version, the sources are located directly under the &quot;php_dir&quot; (PEAR directory).
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <dir name="doc">
-    <file name="LICENSE" role="doc">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-   </dir> <!-- /doc -->
-   <dir name="src">
-    <dir name="Stagehand">
-     <dir name="Autoload">
-      <dir name="Loader">
-       <file name="LegacyLoader.php" role="php">
-        <tasks:replace from="@package_version@" to="version" type="package-info" />
-       </file>
-       <file name="NamespaceLoader.php" role="php">
-        <tasks:replace from="@package_version@" to="version" type="package-info" />
-       </file>
-      </dir> <!-- /src/Stagehand/Autoload/Loader -->
-      <file name="Exception.php" role="php">
-       <tasks:replace from="@package_version@" to="version" type="package-info" />
-      </file>
-      <file name="Loader.php" role="php">
-       <tasks:replace from="@package_version@" to="version" type="package-info" />
-      </file>
-     </dir> <!-- /src/Stagehand/Autoload -->
-     <file name="Autoload.php" role="php">
-      <tasks:replace from="@package_version@" to="version" type="package-info" />
-     </file>
-    </dir> <!-- /src/Stagehand -->
-   </dir> <!-- /src -->
-   <dir name="tests">
-    <dir name="Stagehand">
-     <dir name="Autoload">
-      <dir name="Loader">
-       <dir name="LegacyLoaderTest">
-        <file name="Foo.php" role="test">
-         <tasks:replace from="@package_version@" to="version" type="package-info" />
-        </file>
-        <file name="MockLegacyLoader.php" role="test">
-         <tasks:replace from="@package_version@" to="version" type="package-info" />
-        </file>
-       </dir> <!-- /tests/Stagehand/Autoload/Loader/LegacyLoaderTest -->
-       <dir name="NamespaceLoaderTest">
-        <file name="Foo.php" role="test">
-         <tasks:replace from="@package_version@" to="version" type="package-info" />
-        </file>
-        <file name="MockNamespaceLoader.php" role="test">
-         <tasks:replace from="@package_version@" to="version" type="package-info" />
-        </file>
-       </dir> <!-- /tests/Stagehand/Autoload/Loader/NamespaceLoaderTest -->
-       <file name="LegacyLoaderTest.php" role="test">
-        <tasks:replace from="@package_version@" to="version" type="package-info" />
-       </file>
-       <file name="NamespaceLoaderTest.php" role="test">
-        <tasks:replace from="@package_version@" to="version" type="package-info" />
-       </file>
-       <file name="TestCase.php" role="test">
-        <tasks:replace from="@package_version@" to="version" type="package-info" />
-       </file>
-      </dir> <!-- /tests/Stagehand/Autoload/Loader -->
-     </dir> <!-- /tests/Stagehand/Autoload -->
-     <dir name="AutoloadTest">
-      <file name="ClassForLegacyLoader.php" role="test">
-       <tasks:replace from="@package_version@" to="version" type="package-info" />
-      </file>
-      <file name="ClassForNamespaceLoader.php" role="test">
-       <tasks:replace from="@package_version@" to="version" type="package-info" />
-      </file>
-     </dir> <!-- /tests/Stagehand/AutoloadTest -->
-     <file name="AutoloadTest.php" role="test">
-      <tasks:replace from="@package_version@" to="version" type="package-info" />
-     </file>
-    </dir> <!-- /tests/Stagehand -->
-    <file name="prepare.php" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-   </dir> <!-- /tests -->
-  </dir> <!-- / -->
+   <file baseinstalldir="/" md5sum="7f86a8ca879391cde90e33ac3a5aa736" name="doc/LICENSE" role="doc" />
+   <file baseinstalldir="/" md5sum="95eb8ae1fb714f069c5987ed90266cb7" name="Stagehand/Autoload.php" role="php" />
+   <file baseinstalldir="/" md5sum="f1a16093cabea8d03a5711c3eff743a1" name="Stagehand/Autoload/Exception.php" role="php" />
+   <file baseinstalldir="/" md5sum="9f8d3019c3ffce297fc00f7d6aa76ff0" name="Stagehand/Autoload/Loader.php" role="php" />
+   <file baseinstalldir="/" md5sum="1c142a44565bd4ee9f8bf2757646b9e6" name="Stagehand/Autoload/Loader/LegacyLoader.php" role="php" />
+   <file baseinstalldir="/" md5sum="16689ed5fb5fc92b9d563fd944cf29cb" name="Stagehand/Autoload/Loader/NamespaceLoader.php" role="php" />
+  </dir>
  </contents>
  <dependencies>
   <required>
@@ -130,68 +57,45 @@ What&apos;s New in Stagehand_Autoload 1.0.0
  <changelog>
   <release>
    <version>
-    <release>1.0.0</release>
-    <api>0.3.0</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2010-01-25</date>
-   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
-   <notes>
-What&apos;s New in Stagehand_Autoload 1.0.0
-
- The first stable release of Stagehand_Autoload:
-
-  This is the first release of Stagehand_Autoload. Stagehand_Autoload 1.0.0 is the same as Stagehand_Autoload 0.5.0 except the version number.
-   </notes>
-  </release>
-  <release>
-   <version>
-    <release>0.5.0</release>
-    <api>0.3.0</api>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
    </version>
    <stability>
     <release>beta</release>
     <api>beta</api>
    </stability>
-   <date>2010-01-05</date>
+   <date>2008-11-25</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
    <notes>
-What&apos;s New in Stagehand_Autoload 0.5.0
-
- Searches target namespaces in FIFO order.:
-
-  As of this version, namespaces are searched in FIFO order. (Issue #122)
-
- A defect fix:
-
-  A defect has been fixed that caused NamespaceLoader not to work with two or more level nesting target namespaces. (Issue #123)
+The first beta release of Stagehand_Autoload.
    </notes>
   </release>
   <release>
    <version>
-    <release>0.4.0</release>
-    <api>0.3.0</api>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
    </version>
    <stability>
     <release>beta</release>
     <api>beta</api>
    </stability>
-   <date>2009-09-13</date>
+   <date>2009-08-20</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
    <notes>
-What&apos;s New in Stagehand_Autoload 0.4.0
+Release Date: 2009-08-20
 
- New APIs for getting built-in loaders:
+What&apos;s New in Stagehand_Autoload 0.2.0
 
-  The following methods are now available for getting the built-in loaders:
+ New APIs:
 
-   * Stagehand_Autoload::legacyLoader() which replaces Stagehand_Autoload::getLegacyLoader()
-   * Stagehand_Autoload::namespaceLoader() which replaces Stagehand_Autoload::getNamespaceLoader()
+  The following new APIs have been added to use autoload more explicitly:
 
-  The old APIs Stagehand_Autoload::getLegacyLoader() and Stagehand_Autoload::getNamespaceLoader() have been deprecated, and these will be removed in after this release.
+   * Stagehand_Autoload::register()
+   * Stagehand_Autoload::getLoader()
+   * Stagehand_Autoload_Loader_LegacyLoader for the Package_Class style naming convension
+   * Stagehand_Autoload_Loader_NamespaceLoader for the Package\Class style naming convension for PHP 5.3
+
+For more information, see the Reference Guide.
    </notes>
   </release>
   <release>
@@ -229,45 +133,83 @@ What&apos;s New in Stagehand_Autoload 0.3.0
   </release>
   <release>
    <version>
-    <release>0.2.0</release>
-    <api>0.2.0</api>
+    <release>0.4.0</release>
+    <api>0.3.0</api>
    </version>
    <stability>
     <release>beta</release>
     <api>beta</api>
    </stability>
-   <date>2009-08-20</date>
+   <date>2009-09-13</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
    <notes>
-Release Date: 2009-08-20
+What&apos;s New in Stagehand_Autoload 0.4.0
 
-What&apos;s New in Stagehand_Autoload 0.2.0
+ New APIs for getting built-in loaders:
 
- New APIs:
+  The following methods are now available for getting the built-in loaders:
 
-  The following new APIs have been added to use autoload more explicitly:
+   * Stagehand_Autoload::legacyLoader() which replaces Stagehand_Autoload::getLegacyLoader()
+   * Stagehand_Autoload::namespaceLoader() which replaces Stagehand_Autoload::getNamespaceLoader()
 
-   * Stagehand_Autoload::register()
-   * Stagehand_Autoload::getLoader()
-   * Stagehand_Autoload_Loader_LegacyLoader for the Package_Class style naming convension
-   * Stagehand_Autoload_Loader_NamespaceLoader for the Package\Class style naming convension for PHP 5.3
-
-For more information, see the Reference Guide.
+  The old APIs Stagehand_Autoload::getLegacyLoader() and Stagehand_Autoload::getNamespaceLoader() have been deprecated, and these will be removed in after this release.
    </notes>
   </release>
   <release>
    <version>
-    <release>0.1.0</release>
-    <api>0.1.0</api>
+    <release>0.5.0</release>
+    <api>0.3.0</api>
    </version>
    <stability>
     <release>beta</release>
     <api>beta</api>
    </stability>
-   <date>2008-11-25</date>
+   <date>2010-01-05</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
    <notes>
-The first beta release of Stagehand_Autoload.
+What&apos;s New in Stagehand_Autoload 0.5.0
+
+ Searches target namespaces in FIFO order.:
+
+  As of this version, namespaces are searched in FIFO order. (Issue #122)
+
+ A defect fix:
+
+  A defect has been fixed that caused NamespaceLoader not to work with two or more level nesting target namespaces. (Issue #123)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2010-01-25</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+What&apos;s New in Stagehand_Autoload 1.0.0
+
+ The first stable release of Stagehand_Autoload:
+
+  This is the first release of Stagehand_Autoload. Stagehand_Autoload 1.0.0 is the same as Stagehand_Autoload 0.5.0 except the version number.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2010-09-11</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+The features of Stagehand_Autoload 1.1.0 is the same as Stagehand_Autoload 1.0.0 except the version number and the directory structure. As of this version, the sources are located directly under the &quot;php_dir&quot; (PEAR directory).
    </notes>
   </release>
  </changelog>
